@@ -1,3 +1,12 @@
+@font-face{
+    font-family: "MyFont";
+    src:url('./fonts/Kirang_Haerang/KirangHaerang-Regular.ttf') format("truetype");
+    font-weight: 600;
+    font-style: normal;
+
+}
+
 .red{
     color:red;
+    font-family: "MyFont"
 }
