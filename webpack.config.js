@@ -1,10 +1,14 @@
 const path = require("path");
-
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const CleanWebpackPlugin= require("clean-webpack-plugin")
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    print:"./src/print.js",
+    app: "./src/index.js"
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js"
+    filename: "[name].bundle.js"
   },
   module: {
     rules: [
@@ -13,7 +17,7 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.(png|svg|jpg|gif)/,
+        test: /\.(png|svg|jpe?g|gif)/,
         use: ["file-loader"]
       },
       {
@@ -21,5 +25,11 @@ module.exports = {
           use:["file-loader"]
       }
     ]
-  }
+  },
+  plugins:[
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title:"output"
+    })
+  ]
 };
