@@ -8,8 +8,9 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].bundle.js"
+    filename: "[name].[hash:8].js"
   },
+  devtool:"inline-source-map",
   module: {
     rules: [
       {
