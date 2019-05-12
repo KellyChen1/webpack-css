@@ -1,16 +1,26 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const CleanWebpackPlugin= require("clean-webpack-plugin")
+const webpack = require("webpack")
 module.exports = {
   entry: {
-    print:"./src/print.js",
-    app: "./src/index.js"
+    app: "./src/index.js",
+    // print:"./src/print.js"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[hash:8].js"
+    filename: "[name].[hash:8].js",
+    publicPath:"/"
   },
-  devtool:"inline-source-map",
+  devtool:"inline-source-map", //源码匹配
+  
+  //webpack-dev-server: keep bundle file in memory
+  devServer: {    
+    contentBase: '/dist',
+    hot: true,
+    compress:true,
+    port:3000,
+  },
   module: {
     rules: [
       {
@@ -29,6 +39,8 @@ module.exports = {
   },
   plugins:[
     new CleanWebpackPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title:"output"
     })
