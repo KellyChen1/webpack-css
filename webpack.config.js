@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const CleanWebpackPlugin= require("clean-webpack-plugin")
 const webpack = require("webpack")
 module.exports = {
+  mode:"production",
   entry: {
     app: "./src/index.js",
     // print:"./src/print.js"
@@ -10,7 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[hash:8].js",
-    publicPath:"/"
+    // publicPath:"/"  //加了这条，打包后，路径有问题，引用不到文件
   },
   devtool:"inline-source-map", //源码匹配
   
