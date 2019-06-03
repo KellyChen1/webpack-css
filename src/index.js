@@ -8,7 +8,7 @@ function component(){
     // let node = document.createElement("div"); 
     let node =document.createElement("pre")
     // node.innerText="hi, I am nuts"
-    node.innerHTML=["hello, webpack", "5 cubed is equal to " + cube(5)]
+    node.innerHTML=["hello, webpack", "5 cubed is equal to " + cube(5)].join(",")
     // 添加样式
     node.className="red"
     // 添加图片
